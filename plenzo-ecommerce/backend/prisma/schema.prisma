@@ -1,0 +1,50 @@
+// backend/prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("CUSTOMER") // CUSTOMER හෝ ADMIN
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  slug     String    @unique
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String
+  priceLKR    Float
+  priceUSD    Float?
+  stock       Int      @default(0)
+  imageUrl    String
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  totalAmount Float
+  currency    String   @default("LKR")
+  status      String   @default("PENDING") // PENDING, PAID, SHIPPED
+  createdAt   DateTime @default(now())
+}
