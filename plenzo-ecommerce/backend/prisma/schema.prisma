@@ -29,14 +29,14 @@ model Product {
   id          String   @id @default(uuid())
   title       String
   slug        String   @unique
-  description String
-  priceLKR    Float
-  priceUSD    Float?
+  description String?
+  price       Float    // <-- මේ පේලිය තියෙනවද බලන්න
+  imageUrl    String?
   stock       Int      @default(0)
-  imageUrl    String
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Order {

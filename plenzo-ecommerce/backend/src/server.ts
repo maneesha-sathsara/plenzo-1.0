@@ -1,7 +1,9 @@
-// backend/src/server.ts
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import categoryRoutes from './routes/category.routes';
+import productRoutes from './routes/product.routes';
+import authRoutes from './routes/auth.routes';
 
 dotenv.config();
 
@@ -11,11 +13,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// API එක වැඩද බලන්න Health Check Route එකක්
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', store: 'Plenzo E-Commerce API Active' });
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Plenzo Backend API is running successfully! 🚀' });
 });
 
 app.listen(PORT, () => {
-  console.log(`Plenzo Backend server running on port ${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
