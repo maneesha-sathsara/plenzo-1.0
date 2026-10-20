@@ -78,11 +78,11 @@ export default function HomePage() {
 
   const activeDeals = products.length > 0 ? products.slice(0, 20) : defaultDeals;
 
-  // Synchronized Auto Deal Slider every 5 seconds
+  // Automatic Smooth Sliding / Pushing every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentDealIndex((prevIndex) => (prevIndex + 1) % activeDeals.length);
-    }, 5000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [activeDeals.length]);
 
@@ -205,7 +205,7 @@ export default function HomePage() {
       </div>
       {/* ================= END OF STICKY CONTAINER ================= */}
 
-      {/* 4. Seamless Vibrant Hero Banner with Professional Instant-Sync Deal Card */}
+      {/* 4. Seamless Vibrant Hero Banner with Clean Sliding Deal Card */}
       <section className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-slate-900 py-12 px-6 shadow-inner relative overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-10">
           <div className="md:col-span-2 space-y-4">
@@ -228,29 +228,29 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Professional Deal Card (Seamless blend, zero delay sync) */}
+          {/* Clean Glassmorphic Slider Card (No white box border, smooth auto-sliding animation) */}
           <div className="flex justify-center relative">
-            <div className="bg-white/95 backdrop-blur-md rounded-[2rem] p-6 shadow-xl text-slate-900 text-center space-y-4 w-full max-w-sm border border-white/40">
+            <div className="bg-white/10 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl text-white text-center space-y-4 w-full max-w-sm border border-white/30 transition-all duration-700 transform">
               <div className="flex justify-center items-center px-1">
-                <span className="text-[10px] font-black uppercase tracking-widest text-red-600 bg-red-100 px-3 py-1 rounded-full inline-block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-white bg-red-600 px-3.5 py-1 rounded-full inline-block shadow-md">
                   Deal of the Day 🔥
                 </span>
               </div>
-              <div className="w-full h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-inner">
+              <div className="w-full h-48 rounded-2xl overflow-hidden bg-slate-900/40 shadow-inner relative">
                 <img
-                  key={currentDeal.id + 'img'}
+                  key={currentDeal.id + 'slide'}
                   src={currentDeal.imageUrl || defaultImage}
                   alt={currentDeal.title}
-                  className="w-full h-full object-cover transition-opacity duration-300 opacity-100 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 animate-fade-in"
                 />
               </div>
-              <h3 key={currentDeal.id + 'title'} className="text-lg font-black text-slate-900 tracking-tight line-clamp-1 transition-all">
+              <h3 className="text-lg font-black text-white tracking-tight line-clamp-1 drop-shadow">
                 {currentDeal.title}
               </h3>
-              <p key={currentDeal.id + 'price'} className="text-xs text-slate-500 font-medium transition-all">
+              <p className="text-xs text-amber-200 font-bold drop-shadow">
                 Special Price: Rs. {currentDeal.price.toLocaleString()}
               </p>
-              <button onClick={handleAddToCart} className="block w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg mt-2 cursor-pointer">
+              <button onClick={handleAddToCart} className="block w-full py-3.5 bg-white hover:bg-slate-100 text-slate-900 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-xl mt-2 cursor-pointer">
                 Claim Deal
               </button>
             </div>
