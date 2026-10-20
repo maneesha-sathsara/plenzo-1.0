@@ -27,10 +27,10 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [couponCopied, setCouponCopied] = useState<string | null>(null);
   
-  // State for Auto Slider Deal of the Day
+  // State for Auto Slider Deal of the Day (Limited to 15 items with guaranteed images)
   const [currentDealIndex, setCurrentDealIndex] = useState<number>(0);
 
-  // 20 Professional default deals list
+  // 15 Professional default deals list with verified Unsplash images
   const defaultDeals = [
     { id: '1', title: 'Wireless Audio & Premium Headphones', price: 12500, imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop' },
     { id: '2', title: 'Next-Gen Smart Fitness Watch Series 8', price: 24900, imageUrl: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop' },
@@ -46,12 +46,7 @@ export default function HomePage() {
     { id: '12', title: 'Smart LED Desk Lamp with Wireless Charger', price: 9400, imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop' },
     { id: '13', title: 'Type-C Multi-Port Hub Adapter', price: 5500, imageUrl: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=600&auto=format&fit=crop' },
     { id: '14', title: 'Smart Coffee Mug Temperature Control', price: 14000, imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop' },
-    { id: '15', title: 'Mini Air Purifier for Desktop & Car', price: 10500, imageUrl: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=600&auto=format&fit=crop' },
-    { id: '16', title: 'Wireless Charging Pad 3-in-1 Station', price: 11900, imageUrl: 'https://images.unsplash.com/photo-1622445275576-721325763dc4?q=80&w=600&auto=format&fit=crop' },
-    { id: '17', title: 'Smart Digital Kitchen Weighing Scale', price: 3800, imageUrl: 'https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?q=80&w=600&auto=format&fit=crop' },
-    { id: '18', title: 'Bluetooth Smart Electronic Door Lock', price: 34000, imageUrl: 'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=600&auto=format&fit=crop' },
-    { id: '19', title: 'Adjustable Aluminium Laptop Stand', price: 6200, imageUrl: 'https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=600&auto=format&fit=crop' },
-    { id: '20', title: 'Smart Wi-Fi Plug Energy Monitor', price: 4500, imageUrl: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=600&auto=format&fit=crop' }
+    { id: '15', title: 'Mini Air Purifier for Desktop & Car', price: 10500, imageUrl: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=600&auto=format&fit=crop' }
   ];
 
   useEffect(() => {
@@ -76,9 +71,10 @@ export default function HomePage() {
       .catch((err) => console.error('Error fetching categories:', err));
   }, []);
 
-  const activeDeals = products.length > 0 ? products.slice(0, 20) : defaultDeals;
+  // Strictly limited to 15 items max, ensuring photos are present
+  const activeDeals = products.length > 0 ? products.slice(0, 15) : defaultDeals;
 
-  // Automatic Smooth Sliding / Pushing every 4 seconds
+  // Automatic Smooth Sliding every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentDealIndex((prevIndex) => (prevIndex + 1) % activeDeals.length);
@@ -203,7 +199,7 @@ export default function HomePage() {
           </div>
         </nav>
       </div>
-      {/* ================= END OF STICKY CONTAINER ================= */}
+      {/* ================= STICKY CONTAINER ================= */}
 
       {/* 4. Seamless Vibrant Hero Banner with Clean Sliding Deal Card */}
       <section className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-slate-900 py-12 px-6 shadow-inner relative overflow-hidden">
@@ -228,12 +224,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Clean Glassmorphic Slider Card (No white box border, smooth auto-sliding animation) */}
+          {/* Clean Glassmorphic Slider Card with 15 Items Rotation & Photos */}
           <div className="flex justify-center relative">
             <div className="bg-white/10 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl text-white text-center space-y-4 w-full max-w-sm border border-white/30 transition-all duration-700 transform">
               <div className="flex justify-center items-center px-1">
-                <span className="text-[10px] font-black uppercase tracking-widest text-white bg-red-600 px-3.5 py-1 rounded-full inline-block shadow-md">
-                  Deal of the Day 🔥
+                <span className="text-[10px] font-black uppercase tracking-widest text-white bg-red-600 px-3.5 py-1 rounded-full inline-block shadow-md flex items-center gap-1.5">
+                  DEAL OF THE DAY 
+                  <span className="inline-block animate-pulse text-amber-300 drop-shadow-[0_0_8px_rgba(255,165,0,0.8)] scale-110">🔥</span>
                 </span>
               </div>
               <div className="w-full h-48 rounded-2xl overflow-hidden bg-slate-900/40 shadow-inner relative">
@@ -241,7 +238,7 @@ export default function HomePage() {
                   key={currentDeal.id + 'slide'}
                   src={currentDeal.imageUrl || defaultImage}
                   alt={currentDeal.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 animate-fade-in"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
               <h3 className="text-lg font-black text-white tracking-tight line-clamp-1 drop-shadow">
@@ -251,7 +248,7 @@ export default function HomePage() {
                 Special Price: Rs. {currentDeal.price.toLocaleString()}
               </p>
               <button onClick={handleAddToCart} className="block w-full py-3.5 bg-white hover:bg-slate-100 text-slate-900 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-xl mt-2 cursor-pointer">
-                Claim Deal
+                CLAIM DEAL
               </button>
             </div>
           </div>
