@@ -255,59 +255,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4.1 Sleek Discount Coupons Bar */}
+      {/* 4.1 Vibrant Yellow/Amber Promo Coupons Bar */}
       <div id="coupons" className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 w-full">
-        <div className="bg-slate-900 rounded-2xl p-4 md:p-6 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-4 border border-slate-800">
+        <div className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-2xl p-4 md:p-6 text-slate-950 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border border-amber-300">
           <div className="flex items-center gap-3">
-            <span className="text-2xl">🎟️</span>
+            <span className="text-3xl animate-bounce">🎟️</span>
             <div>
-              <h4 className="text-sm font-bold text-amber-400">Active Promo Coupons</h4>
-              <p className="text-[11px] text-slate-400">Click code to copy instantly at checkout</p>
+              <h4 className="text-base font-black tracking-wide">Active Promo Coupons</h4>
+              <p className="text-xs text-slate-800 font-semibold">Click code to copy instantly at checkout</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
-            <button onClick={() => copyCoupon('SAVE1000')} className="bg-white/10 hover:bg-amber-400 hover:text-slate-900 border border-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
-              <span>Rs. 1,000 OFF</span> <span className="bg-amber-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'SAVE1000' ? 'COPIED!' : 'SAVE1000'}</span>
+            <button onClick={() => copyCoupon('SAVE1000')} className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md">
+              <span>Rs. 1,000 OFF</span> <span className="bg-amber-400 text-slate-950 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'SAVE1000' ? 'COPIED!' : 'SAVE1000'}</span>
             </button>
-            <button onClick={() => copyCoupon('TECH20')} className="bg-white/10 hover:bg-amber-400 hover:text-slate-900 border border-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
-              <span>20% FLAT OFF</span> <span className="bg-amber-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'TECH20' ? 'COPIED!' : 'TECH20'}</span>
+            <button onClick={() => copyCoupon('TECH20')} className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md">
+              <span>20% FLAT OFF</span> <span className="bg-amber-400 text-slate-950 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'TECH20' ? 'COPIED!' : 'TECH20'}</span>
             </button>
-            <button onClick={() => copyCoupon('FREESHIP')} className="bg-white/10 hover:bg-amber-400 hover:text-slate-900 border border-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
-              <span>FREE SHIPPING</span> <span className="bg-amber-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'FREESHIP' ? 'COPIED!' : 'FREESHIP'}</span>
+            <button onClick={() => copyCoupon('FREESHIP')} className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md">
+              <span>FREE SHIPPING</span> <span className="bg-amber-400 text-slate-950 px-2 py-0.5 rounded text-[10px] font-black">{couponCopied === 'FREESHIP' ? 'COPIED!' : 'FREESHIP'}</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* 5. Trust Badges */}
+      {/* 5. Trust Badges with Yellow/Amber Accent */}
       <section className="bg-white border-b border-slate-200 py-6 px-6 shadow-sm z-10 relative mt-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          <div className="flex items-center gap-3.5 justify-center p-3 bg-amber-50/50 rounded-2xl border border-amber-100/50 hover:bg-amber-50 transition cursor-pointer">
-            <div className="p-2.5 bg-amber-100 text-amber-700 rounded-xl text-xl shadow-sm">🚚</div>
+          <div className="flex items-center gap-3.5 justify-center p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200/70 hover:shadow-md transition cursor-pointer">
+            <div className="p-2.5 bg-amber-400 text-slate-950 rounded-xl text-xl shadow-md font-bold">🚚</div>
             <div className="text-left">
-              <h4 className="text-xs font-extrabold text-slate-800">Fast Delivery</h4>
-              <p className="text-[11px] text-slate-500 font-medium">Islandwide Shipping</p>
+              <h4 className="text-xs font-extrabold text-slate-900">Fast Delivery</h4>
+              <p className="text-[11px] text-slate-600 font-medium">Islandwide Shipping</p>
             </div>
           </div>
-          <div className="flex items-center gap-3.5 justify-center p-3 bg-blue-50/50 rounded-2xl border border-blue-100/50 hover:bg-blue-50 transition cursor-pointer">
-            <div className="p-2.5 bg-blue-100 text-blue-700 rounded-xl text-xl shadow-sm">🛡️</div>
+          <div className="flex items-center gap-3.5 justify-center p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200/70 hover:shadow-md transition cursor-pointer">
+            <div className="p-2.5 bg-amber-400 text-slate-950 rounded-xl text-xl shadow-md font-bold">🛡️</div>
             <div className="text-left">
-              <h4 className="text-xs font-extrabold text-slate-800">100% Authentic</h4>
-              <p className="text-[11px] text-slate-500 font-medium">Genuine Guarantee</p>
+              <h4 className="text-xs font-extrabold text-slate-900">100% Authentic</h4>
+              <p className="text-[11px] text-slate-600 font-medium">Genuine Guarantee</p>
             </div>
           </div>
-          <div className="flex items-center gap-3.5 justify-center p-3 bg-emerald-50/50 rounded-2xl border border-emerald-100/50 hover:bg-emerald-50 transition cursor-pointer">
-            <div className="p-2.5 bg-emerald-100 text-emerald-700 rounded-xl text-xl shadow-sm">💳</div>
+          <div className="flex items-center gap-3.5 justify-center p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200/70 hover:shadow-md transition cursor-pointer">
+            <div className="p-2.5 bg-amber-400 text-slate-950 rounded-xl text-xl shadow-md font-bold">💳</div>
             <div className="text-left">
-              <h4 className="text-xs font-extrabold text-slate-800">Safe Cash Delivery</h4>
-              <p className="text-[11px] text-slate-500 font-medium">Pay on Arrival</p>
+              <h4 className="text-xs font-extrabold text-slate-900">Safe Cash Delivery</h4>
+              <p className="text-[11px] text-slate-600 font-medium">Pay on Arrival</p>
             </div>
           </div>
-          <div className="flex items-center gap-3.5 justify-center p-3 bg-purple-50/50 rounded-2xl border border-purple-100/50 hover:bg-purple-50 transition cursor-pointer">
-            <div className="p-2.5 bg-purple-100 text-purple-700 rounded-xl text-xl shadow-sm">🔄</div>
+          <div className="flex items-center gap-3.5 justify-center p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200/70 hover:shadow-md transition cursor-pointer">
+            <div className="p-2.5 bg-amber-400 text-slate-950 rounded-xl text-xl shadow-md font-bold">🔄</div>
             <div className="text-left">
-              <h4 className="text-xs font-extrabold text-slate-800">Easy Returns</h4>
-              <p className="text-[11px] text-slate-500 font-medium">Hassle-free Refunds</p>
+              <h4 className="text-xs font-extrabold text-slate-900">Easy Returns</h4>
+              <p className="text-[11px] text-slate-600 font-medium">Hassle-free Refunds</p>
             </div>
           </div>
         </div>
