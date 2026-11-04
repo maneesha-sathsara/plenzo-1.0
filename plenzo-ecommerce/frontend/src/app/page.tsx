@@ -27,10 +27,10 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [couponCopied, setCouponCopied] = useState<string | null>(null);
   
-  // State for Auto Slider Deal of the Day (Limited to 15 items with guaranteed images)
+  
   const [currentDealIndex, setCurrentDealIndex] = useState<number>(0);
 
-  // 15 Professional default deals list with verified Unsplash images
+  
   const defaultDeals = [
     { id: '1', title: 'Wireless Audio & Premium Headphones', price: 12500, imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop' },
     { id: '2', title: 'Next-Gen Smart Fitness Watch Series 8', price: 24900, imageUrl: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop' },
@@ -71,10 +71,10 @@ export default function HomePage() {
       .catch((err) => console.error('Error fetching categories:', err));
   }, []);
 
-  // Strictly limited to 15 items max, ensuring photos are present
+  
   const activeDeals = products.length > 0 ? products.slice(0, 15) : defaultDeals;
 
-  // Automatic Smooth Sliding every 4 seconds
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentDealIndex((prevIndex) => (prevIndex + 1) % activeDeals.length);
@@ -107,9 +107,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-amber-200">
       
-      {/* ================= STICKY TOP CONTAINER ================= */}
+      
       <div className="sticky top-0 z-50 shadow-md">
-        {/* 1. Top Announcement Bar */}
+        
         <div className="bg-amber-400 text-slate-900 text-xs py-1.5 px-4 text-center font-bold tracking-wide flex justify-center items-center gap-2">
           <span>⚡ MEGA SHOPPING SALE 2026: Up to 50% OFF on Selected Products!</span>
           <span className="bg-slate-900 text-amber-300 px-2 py-0.5 rounded text-[10px] uppercase font-black cursor-pointer hover:bg-slate-800" onClick={() => copyCoupon('PLENZO50')}>
@@ -117,7 +117,7 @@ export default function HomePage() {
           </span>
         </div>
 
-        {/* 2. Advanced Retail Header */}
+      
         <header className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-6">
             <a href="#" className="flex items-center gap-2 shrink-0">
@@ -128,7 +128,7 @@ export default function HomePage() {
               </span>
             </a>
 
-            {/* Search Bar */}
+          
             <div className="flex-1 max-w-3xl relative hidden lg:block">
               <div className="flex w-full rounded-xl overflow-hidden border-2 border-amber-500 bg-white focus-within:ring-2 focus-within:ring-amber-200 transition-all shadow-sm">
                 <select className="bg-slate-50 text-slate-700 text-xs px-3 py-2.5 outline-none border-r border-slate-200 hover:bg-slate-100 cursor-pointer w-auto max-w-[140px] font-medium">
@@ -152,7 +152,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Header Controls */}
+            
             <div className="flex items-center gap-4 shrink-0">
               <button className="p-2.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-xl transition relative hidden sm:block">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,9 +199,9 @@ export default function HomePage() {
           </div>
         </nav>
       </div>
-      {/* ================= STICKY CONTAINER ================= */}
+      
 
-      {/* 4. Seamless Vibrant Hero Banner with Clean Sliding Deal Card */}
+      
       <section className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-slate-900 py-12 px-6 shadow-inner relative overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-10">
           <div className="md:col-span-2 space-y-4">
@@ -224,7 +224,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Clean Glassmorphic Slider Card with 15 Items Rotation & Photos */}
+          
           <div className="flex justify-center relative">
             <div className="bg-white/10 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl text-white text-center space-y-4 w-full max-w-sm border border-white/30 transition-all duration-700 transform">
               <div className="flex justify-center items-center px-1">
@@ -255,7 +255,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4.1 Vibrant Yellow/Amber Promo Coupons Bar */}
       <div id="coupons" className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 w-full">
         <div className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-2xl p-4 md:p-6 text-slate-950 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border border-amber-300">
           <div className="flex items-center gap-3">
@@ -279,7 +278,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 5. Trust Badges with Yellow/Amber Accent */}
+      
       <section className="bg-white border-b border-slate-200 py-6 px-6 shadow-sm z-10 relative mt-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           <div className="flex items-center gap-3.5 justify-center p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200/70 hover:shadow-md transition cursor-pointer">
@@ -313,7 +312,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Main Shopping Area */}
+      
       <main id="products" className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col lg:flex-row gap-8 w-full flex-1">
         
         {/* Left Sidebar */}
@@ -357,10 +356,10 @@ export default function HomePage() {
           </div>
         </aside>
 
-        {/* Right Content Area */}
+        
         <div className="flex-1 w-full">
           
-          {/* HOT DEALS SWIPE CAROUSEL */}
+          
           <div id="deals" className="mb-10">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
@@ -402,7 +401,7 @@ export default function HomePage() {
             )}
           </div>
 
-          {/* Sorting Header */}
+          
           <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <h3 className="text-xl font-black text-slate-900">All Products Catalog</h3>
@@ -419,7 +418,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Product Grid */}
+      
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -490,7 +489,7 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* 7. Footer */}
+      
       <footer className="bg-slate-900 text-slate-400 text-xs mt-12">
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10 border-t border-slate-800">
           <div className="space-y-4">
